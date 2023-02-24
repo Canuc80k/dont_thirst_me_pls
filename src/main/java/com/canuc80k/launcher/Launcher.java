@@ -1,6 +1,6 @@
 package com.canuc80k.launcher;
 
-import com.canuc80k.clock.ExtendedClock;
+import com.canuc80k.timer.CountdownClock;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -10,19 +10,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
-
     private Button picture, clock, laptop, speaker, glass;
-    private ExtendedClock extendedClock;
+    private CountdownClock countdownClock;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primeStage) throws Exception {
-        extendedClock = new ExtendedClock();
+    public void start(Stage primeStage) {
         new Thread(() -> {
-            extendedClock.start();
+            countdownClock = new CountdownClock();
         }).start();
 
         primeStage.setTitle("dont_thirst_me_pls");
@@ -61,8 +59,10 @@ public class Launcher extends Application {
 
         Scene scene = new Scene(group, 200, 300, Color.GRAY);  
         primeStage.setScene(scene);  
-        primeStage.show();  
+        primeStage.show();
 
-        primeStage.setOnHiding(e -> {extendedClock.stop();});
+        primeStage.onCloseRequestProperty().addListener(e -> {
+            countdownClock.stop();
+        });
     }
 }
