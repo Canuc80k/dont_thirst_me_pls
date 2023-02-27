@@ -6,11 +6,13 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
-    private Button picture, clock, laptop, speaker, glass;
+    private Button background, picture, clock, laptop, speaker, glass;
     private CountdownClock countdownClock;
 
     public static void main(String[] args) {
@@ -30,34 +32,79 @@ public class Launcher extends Application {
 
         Group group = new Group();  
         
-        picture = new Button("Picture");
-        picture.setLayoutX(100);
-        picture.setLayoutY(100);
-        picture.setPrefSize(50, 50);
+        picture = new Button();
+        picture.setLayoutX(20);
+        picture.setLayoutY(10);
+        picture.setGraphic(
+            new ImageView( 
+                new Image(
+                    Launcher.class.getResourceAsStream("/design/picture.png")
+                )
+            )
+        );
+        picture.setBackground(null);
 
-        clock = new Button("Clock");
-        clock.setLayoutX(100);
-        clock.setLayoutY(200);
-        clock.setPrefSize(50, 50);
+        clock = new Button();
+        clock.setLayoutX(397);
+        clock.setLayoutY(20);        
+        clock.setGraphic(
+            new ImageView( 
+                new Image(
+                    Launcher.class.getResourceAsStream("/design/clock.png")
+                )
+            )
+        );
+        clock.setBackground(null);
 
-        laptop = new Button("Laptop");
-        laptop.setLayoutX(200);
+        laptop = new Button();
+        laptop.setLayoutX(249);
         laptop.setLayoutY(100);
-        laptop.setPrefSize(50, 50);
+        laptop.setGraphic(
+            new ImageView( 
+                new Image(
+                    Launcher.class.getResourceAsStream("/design/laptop.png")
+                )
+            )
+        );
+        laptop.setBackground(null);
 
-        speaker = new Button("Speaker");
-        speaker.setLayoutX(200);
-        speaker.setLayoutY(200);
-        speaker.setPrefSize(50, 50);
+        speaker = new Button();
+        speaker.setLayoutX(140);
+        speaker.setLayoutY(98);
+        speaker.setGraphic(
+            new ImageView( 
+                new Image(
+                    Launcher.class.getResourceAsStream("/design/speaker.png")
+                )
+            )
+        );
+        speaker.setBackground(null);
 
-        glass = new Button("Glass");
-        glass.setLayoutX(150);
-        glass.setLayoutY(300);
-        glass.setPrefSize(50, 50);
+        glass = new Button();
+        glass.setLayoutX(156);
+        glass.setLayoutY(252);
+        glass.setGraphic(
+            new ImageView( 
+                new Image(
+                    Launcher.class.getResourceAsStream("/design/glass.png")
+                )
+            )
+        );
+        glass.setBackground(null);
+        background = new Button();
+        background.setLayoutX(-10);
+        background.setLayoutY(-10);
+        background.setGraphic(
+            new ImageView( 
+                new Image(
+                    Launcher.class.getResourceAsStream("/design/background.png")
+                )
+            )
+        );
+        background.setBackground(null);
+        group.getChildren().addAll(background, picture, clock, laptop, speaker, glass);
 
-        group.getChildren().addAll(picture, clock, laptop, speaker, glass);
-
-        Scene scene = new Scene(group, 200, 300, Color.GRAY);  
+        Scene scene = new Scene(group, 500, 500, Color.GRAY);
         primeStage.setScene(scene);  
         primeStage.show();
 
