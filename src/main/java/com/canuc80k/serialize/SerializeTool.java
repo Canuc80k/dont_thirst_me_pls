@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class SerializeTool {
-    public static void serializeActiveState(File savedFile, Object object) {
+    public static void serialize(File savedFile, Object object) {
         try {
             ObjectOutputStream configFileObjectOutputStream = new ObjectOutputStream(new FileOutputStream(savedFile));
             configFileObjectOutputStream.writeObject(object);
@@ -19,7 +19,7 @@ public class SerializeTool {
         }
     }
 
-    public static Object deserializeActiveState(File savedFile) {
+    public static Object deserialize(File savedFile) {
         try {
             ObjectInputStream configFileObjectInputStream = new ObjectInputStream(new FileInputStream(savedFile));
             Object object = configFileObjectInputStream.readObject();

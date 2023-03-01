@@ -1,4 +1,4 @@
-package com.canuc80k.filetool;
+package com.canuc80k.file;
 
 import java.io.File;
 import java.io.FileOutputStream;

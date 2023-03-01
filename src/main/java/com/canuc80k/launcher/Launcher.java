@@ -1,5 +1,6 @@
 package com.canuc80k.launcher;
 
+import com.canuc80k.state.ActiveState;
 import com.canuc80k.timer.CountdownClock;
 
 import javafx.application.Application;
@@ -16,6 +17,7 @@ public class Launcher extends Application {
     private CountdownClock countdownClock;
 
     public static void main(String[] args) {
+        StarterSetup.init();
         launch(args);
     }
 
@@ -102,6 +104,9 @@ public class Launcher extends Application {
             )
         );
         background.setBackground(null);
+        background.setOnAction(e -> {
+            updateBackgroundUI();
+        });
         group.getChildren().addAll(background, picture, clock, laptop, speaker, glass);
 
         Scene scene = new Scene(group, 500, 500, Color.GRAY);
@@ -111,5 +116,29 @@ public class Launcher extends Application {
         primeStage.onCloseRequestProperty().addListener(e -> {
             countdownClock.stop();
         });
+    }
+
+    
+    public void updateBackgroundUI() {
+        ActiveState.updateActiveState();
+        boolean activeState = ActiveState.getActiveState();
+
+        if (activeState) {
+            background.setGraphic(
+                new ImageView( 
+                    new Image(
+                        Launcher.class.getResourceAsStream("/design/background_on.png")
+                    )
+                )
+            ); 
+        } else {
+            background.setGraphic(
+                new ImageView( 
+                    new Image(
+                        Launcher.class.getResourceAsStream("/design/background_off.png")
+                    )
+                )
+            );
+        }
     }
 }
