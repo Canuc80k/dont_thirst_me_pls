@@ -99,7 +99,9 @@ public class Launcher extends Application {
         background.setGraphic(
             new ImageView( 
                 new Image(
-                    Launcher.class.getResourceAsStream("/design/background.png")
+                    (ActiveState.getActiveState()) ? 
+                        Launcher.class.getResourceAsStream("/design/background_on.png") :
+                        Launcher.class.getResourceAsStream("/design/background_off.png")
                 )
             )
         );

@@ -3,7 +3,7 @@ package com.canuc80k.storage;
 import java.io.File;
 
 public class ActiveStateConfigFile {
-    public static File activeStateConfigFile;
+    private static File activeStateConfigFile;
     
     public static void createFile() {
         activeStateConfigFile = new File(

@@ -7,12 +7,17 @@ public class ActiveState {
     public final static boolean ACTIVE_ON = true;
     public final static boolean ACTIVE_OFF = true;
 
-    private static boolean activeState;
+    private static Boolean activeState = null;
     
+    public static void startSetup() {
+        activeState = (boolean) SerializeTool.deserialize(ActiveStateConfigFile.getActiveStateConfigFile());
+    }
+
     public static void updateActiveState() {
         activeState = !activeState;
 
-        SerializeTool.serialize(ActiveStateConfigFile.activeStateConfigFile, activeState);
+        SerializeTool.serialize(ActiveStateConfigFile.getActiveStateConfigFile(), activeState);
+        System.out.println( SerializeTool.deserialize(ActiveStateConfigFile.getActiveStateConfigFile()));
     }
 
     public static boolean getActiveState() {
