@@ -133,4 +133,10 @@ public class HomeStage extends Stage {
             );
         }
     }
+
+    public void startCountdownClockInNewThread() {
+        new Thread(() -> {
+            if (ActiveState.getActiveState()) countdownClock = new CountdownClock();
+        }).start();
+    }
 }

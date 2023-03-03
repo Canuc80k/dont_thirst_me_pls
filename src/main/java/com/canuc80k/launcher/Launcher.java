@@ -17,6 +17,7 @@ public class Launcher extends Application {
     public void start(Stage primeStage) {
         HomeStage homeStage = new HomeStage();
         homeStage.create_window();
+        homeStage.startCountdownClockInNewThread();
 
         primeStage = homeStage;
         primeStage.show();
