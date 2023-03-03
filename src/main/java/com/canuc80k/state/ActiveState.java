@@ -17,7 +17,6 @@ public class ActiveState {
         activeState = !activeState;
 
         SerializeTool.serialize(ActiveStateConfigFile.getActiveStateConfigFile(), activeState);
-        System.out.println( SerializeTool.deserialize(ActiveStateConfigFile.getActiveStateConfigFile()));
     }
 
     public static boolean getActiveState() {
