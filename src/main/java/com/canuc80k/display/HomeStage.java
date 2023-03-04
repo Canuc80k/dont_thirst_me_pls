@@ -45,6 +45,12 @@ public class HomeStage extends Stage {
                 )
             )
         );
+        clock.setOnAction(e -> {
+            TimeCustomStage timeCustomStage = new TimeCustomStage();
+            timeCustomStage.create_window();
+
+            timeCustomStage.show();
+        });
         clock.setBackground(null);
 
         laptop = new Button();
